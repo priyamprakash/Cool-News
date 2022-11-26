@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tiniest">6sp</dimen>
+    <dimen name="tinier">8sp</dimen>
+    <dimen name="tiny">10sp</dimen>
+    <dimen name="small">14sp</dimen>
+    <dimen name="smaller">12sp</dimen>
+</resources>
