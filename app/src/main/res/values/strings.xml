@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cool News</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid aut beatae consectetur consequuntur culpa distinctio ea eaque error esse est inventore itaque, laborum magnam natus non nostrum omnis praesentium quam, quas reiciendis rem saepe sit soluta vel? Animi cum dolore eveniet impedit nemo nesciunt qui rerum saepe sunt tempore.</string>
 </resources>
