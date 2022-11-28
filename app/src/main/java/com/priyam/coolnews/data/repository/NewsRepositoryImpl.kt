@@ -12,7 +12,7 @@ class NewsRepositoryImpl(
     override suspend fun getNewsHeadlines(): Resource<APIResponse> {
         return responseToResource(newsRemoteDataSource.getTopHeadlines())
     }
-    
+
     private fun responseToResource(response: Response<APIResponse>):Resource<APIResponse>{
         if(response.isSuccessful)
         {
