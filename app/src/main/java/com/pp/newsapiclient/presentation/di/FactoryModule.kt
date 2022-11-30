@@ -1,6 +1,7 @@
 package com.pp.newsapiclient.presentation.di
 
 import android.app.Application
+import com.pp.newsapiclient.data.repository.NewsRepository
 import com.pp.newsapiclient.domain.usecase.*
 import com.pp.newsapiclient.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
@@ -16,6 +17,7 @@ class FactoryModule {
     @Provides
   fun provideNewsViewModelFactory(
      application: Application,
+     newsRepository: NewsRepository,
      getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
      getSearchedNewsUseCase: GetSearchedNewsUseCase,
      saveNewsUseCase: SaveNewsUseCase,
@@ -24,6 +26,7 @@ class FactoryModule {
   ):NewsViewModelFactory{
       return NewsViewModelFactory(
           application,
+          newsRepository,
           getNewsHeadlinesUseCase,
           getSearchedNewsUseCase,
           saveNewsUseCase,
