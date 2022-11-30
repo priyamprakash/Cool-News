@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.anushka.newsapiclient.NewsFragment"
+        android:name="com.pp.newsapiclient.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/savedFragment"
-        android:name="com.anushka.newsapiclient.SavedFragment"
+        android:name="com.pp.newsapiclient.SavedFragment"
         android:label="fragment_saved"
         tools:layout="@layout/fragment_saved" >
         <action
@@ -25,11 +25,11 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.anushka.newsapiclient.InfoFragment"
+        android:name="com.pp.newsapiclient.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" >
         <argument
             android:name="selected_article"
-            app:argType="com.anushka.newsapiclient.data.model.Article" />
+            app:argType="com.pp.newsapiclient.data.model.Article" />
     </fragment>
 </navigation>
