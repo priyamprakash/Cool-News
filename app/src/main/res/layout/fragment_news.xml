@@ -3,21 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/layout_background"
+    android:background="@color/white"
     tools:context=".NewsFragment">
 
     <SearchView
         android:id="@+id/svNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/search_background" />
+        android:layout_margin="5dp"
+        android:searchIcon="@drawable/ic_search"
+        android:searchHintIcon="@drawable/ic_search"
+        android:queryHint="Enter keywords"
+        android:background="@drawable/dotted_border"
+        android:elevation="12dp"
+        android:animateLayoutChanges="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        tools:listitem="@layout/news_list_item"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        >
     </androidx.recyclerview.widget.RecyclerView>
     <ProgressBar
         android:id="@+id/progressBar"

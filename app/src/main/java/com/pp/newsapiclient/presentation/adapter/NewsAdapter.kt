@@ -1,5 +1,6 @@
 package com.pp.newsapiclient.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -48,11 +49,12 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     inner class NewsViewHolder(
         val binding:NewsListItemBinding):
         RecyclerView.ViewHolder(binding.root){
+           @SuppressLint("SetTextI18n")
            fun bind(article: Article){
                Log.i("MYTAG","came here ${article.title}")
                binding.tvTitle.text = article.title
                binding.tvDescription.text = article.description
-               binding.tvPublishedAt.text = article.publishedAt
+               binding.tvPublishedAt.text = "Date : ${article.publishedAt.toString().substring(0,10)}"
                binding.tvSource.text = article.source?.name
 
                Glide.with(binding.ivArticleImage.context).

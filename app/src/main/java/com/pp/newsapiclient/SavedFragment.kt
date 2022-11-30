@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -87,7 +88,7 @@ class SavedFragment : Fragment() {
     private fun initRecyclerView(){
       fragmentSavedBinding.rvSaved.apply {
           adapter = newsAdapter
-          layoutManager = LinearLayoutManager(activity)
+          layoutManager = GridLayoutManager(activity,2)
       }
     }
 
