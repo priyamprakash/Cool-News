@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,15 +16,18 @@
         android:layout_height="0dp"
         android:layout_weight="7"
         app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_news"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_news"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="60dp"
         android:background="@color/search_background"
-        app:itemTextColor="@color/list_text"
-        app:itemIconTint="@color/list_text"
+        app:itemIconTint="@color/list_background"
+        app:itemTextColor="@color/list_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_menu" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
