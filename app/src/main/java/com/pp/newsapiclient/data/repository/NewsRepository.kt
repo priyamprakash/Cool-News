@@ -5,19 +5,18 @@ import com.pp.newsapiclient.data.model.Article
 import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
 import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import com.pp.newsapiclient.data.util.Resource
-import com.pp.newsapiclient.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
-class NewsRepositoryImpl(
+class NewsRepository(
         private val newsRemoteDataSource: NewsRemoteDataSource,
         private val newsLocalDataSource: NewsLocalDataSource
-):NewsRepository {
-    override suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse> {
+) {
+    suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse> {
         return responseToResource(newsRemoteDataSource.getTopHeadlines(country,page))
     }
 
-    override suspend fun getSearchedNews(
+    suspend fun getSearchedNews(
         country: String,
         searchQuery: String,
         page: Int
@@ -37,15 +36,15 @@ class NewsRepositoryImpl(
     }
     
 
-    override suspend fun saveNews(article: Article) {
+    suspend fun saveNews(article: Article) {
         newsLocalDataSource.saveArticleToDB(article)
     }
 
-    override suspend fun deleteNews(article: Article) {
+    suspend fun deleteNews(article: Article) {
         newsLocalDataSource.deleteArticlesFromDB(article)
     }
 
-    override fun getSavedNews(): Flow<List<Article>> {
+    fun getSavedNews(): Flow<List<Article>> {
         return newsLocalDataSource.getSavedArticles()
     }
 }

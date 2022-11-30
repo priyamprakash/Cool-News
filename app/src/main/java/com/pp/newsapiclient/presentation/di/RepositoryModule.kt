@@ -1,9 +1,9 @@
 package com.pp.newsapiclient.presentation.di
 
-import com.pp.newsapiclient.data.repository.NewsRepositoryImpl
+import com.pp.newsapiclient.data.repository.NewsRepository
 import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
 import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
-import com.pp.newsapiclient.domain.repository.NewsRepository
+import com.pp.newsapiclient.domain.repository.Waste
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +20,7 @@ class RepositoryModule {
         newsRemoteDataSource: NewsRemoteDataSource,
         newsLocalDataSource: NewsLocalDataSource
     ): NewsRepository {
-        return NewsRepositoryImpl(
+        return NewsRepository(
             newsRemoteDataSource,
             newsLocalDataSource
         )
