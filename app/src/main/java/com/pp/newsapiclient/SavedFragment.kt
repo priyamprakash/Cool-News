@@ -44,9 +44,9 @@ class SavedFragment : Fragment() {
             )
         }
         initRecyclerView()
-        viewModel.getSavedNews().observe(viewLifecycleOwner,{
+        viewModel.getSavedNews().observe(viewLifecycleOwner) {
             newsAdapter.differ.submitList(it)
-        })
+        }
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
           ItemTouchHelper.UP or ItemTouchHelper.DOWN,

@@ -41,14 +41,14 @@ class NewsRepository(
     
 
     suspend fun saveNews(article: Article) {
-        newsLocalDataSource.saveArticleToDB(article)
+        articleDAO.insert(article)
     }
 
     suspend fun deleteNews(article: Article) {
-        newsLocalDataSource.deleteArticlesFromDB(article)
+        articleDAO.deleteArticle(article)
     }
 
     fun getSavedNews(): Flow<List<Article>> {
-        return newsLocalDataSource.getSavedArticles()
+        return articleDAO.getAllArticles()
     }
 }
