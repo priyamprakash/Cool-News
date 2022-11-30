@@ -1,10 +1,10 @@
-package com.pp.newsapiclient.data.repository.dataSourceImpl
+package com.pp.newsapiclient.data.repository.dataSource
 
 import com.pp.newsapiclient.data.api.NewsAPIService
 import com.pp.newsapiclient.data.model.APIResponse
 import retrofit2.Response
 
-class NewsRemoteDataSourceImpl(
+class NewsRemoteDataSource(
         private val newsAPIService: NewsAPIService
 ) {
     suspend fun getTopHeadlines(country : String, page : Int): Response<APIResponse> {

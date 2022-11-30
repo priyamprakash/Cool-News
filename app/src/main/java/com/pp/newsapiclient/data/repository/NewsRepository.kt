@@ -2,15 +2,15 @@ package com.pp.newsapiclient.data.repository
 
 import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
-import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsLocalDataSourceImpl
-import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsRemoteDataSourceImpl
+import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
+import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import com.pp.newsapiclient.data.util.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class NewsRepository(
-        private val newsRemoteDataSource: NewsRemoteDataSourceImpl,
-        private val newsLocalDataSource: NewsLocalDataSourceImpl
+    private val newsRemoteDataSource: NewsRemoteDataSource,
+    private val newsLocalDataSource: NewsLocalDataSource
 ) {
     suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse> {
         return responseToResource(newsRemoteDataSource.getTopHeadlines(country,page))

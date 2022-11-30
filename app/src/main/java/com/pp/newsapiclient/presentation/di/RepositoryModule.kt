@@ -1,8 +1,8 @@
 package com.pp.newsapiclient.presentation.di
 
 import com.pp.newsapiclient.data.repository.NewsRepository
-import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsLocalDataSourceImpl
-import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsRemoteDataSourceImpl
+import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
+import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +16,8 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideNewsRepository(
-        newsRemoteDataSource: NewsRemoteDataSourceImpl,
-        newsLocalDataSource: NewsLocalDataSourceImpl
+        newsRemoteDataSource: NewsRemoteDataSource,
+        newsLocalDataSource: NewsLocalDataSource
     ): NewsRepository {
         return NewsRepository(
             newsRemoteDataSource,

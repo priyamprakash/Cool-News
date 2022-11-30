@@ -1,7 +1,7 @@
 package com.pp.newsapiclient.presentation.di
 
 import com.pp.newsapiclient.data.api.NewsAPIService
-import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsRemoteDataSourceImpl
+import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +16,8 @@ class RemoteDataModule {
     @Provides
     fun provideNewsRemoteDataSource(
         newsAPIService: NewsAPIService
-    ):NewsRemoteDataSourceImpl{
-       return NewsRemoteDataSourceImpl(newsAPIService)
+    ):NewsRemoteDataSource{
+       return NewsRemoteDataSource(newsAPIService)
     }
 
 }
