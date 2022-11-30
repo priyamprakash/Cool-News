@@ -2,7 +2,6 @@ package com.pp.newsapiclient.presentation.di
 
 import android.app.Application
 import com.pp.newsapiclient.data.repository.NewsRepository
-import com.pp.newsapiclient.domain.usecase.*
 import com.pp.newsapiclient.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
 import dagger.Provides
