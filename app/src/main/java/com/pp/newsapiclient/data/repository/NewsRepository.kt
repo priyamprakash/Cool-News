@@ -1,6 +1,7 @@
 package com.pp.newsapiclient.data.repository
 
 import com.pp.newsapiclient.data.api.NewsAPIService
+import com.pp.newsapiclient.data.db.ArticleDAO
 import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
 import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
@@ -11,6 +12,7 @@ import retrofit2.Response
 
 class NewsRepository(
     private val newsAPIService: NewsAPIService,
+    private val articleDAO: ArticleDAO,
     private val newsRemoteDataSource: NewsRemoteDataSource,
     private val newsLocalDataSource: NewsLocalDataSource
 ) {
