@@ -3,8 +3,6 @@ package com.pp.newsapiclient.presentation.di
 import com.pp.newsapiclient.data.api.NewsAPIService
 import com.pp.newsapiclient.data.db.ArticleDAO
 import com.pp.newsapiclient.data.repository.NewsRepository
-import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
-import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,15 +17,11 @@ class RepositoryModule {
     @Provides
     fun provideNewsRepository(
         newsAPIService: NewsAPIService,
-        articleDAO: ArticleDAO,
-        newsRemoteDataSource: NewsRemoteDataSource,
-        newsLocalDataSource: NewsLocalDataSource
+        articleDAO: ArticleDAO
     ): NewsRepository {
         return NewsRepository(
             newsAPIService,
-            articleDAO,
-            newsRemoteDataSource,
-            newsLocalDataSource
+            articleDAO
         )
     }
 

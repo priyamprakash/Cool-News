@@ -12,9 +12,7 @@ import retrofit2.Response
 
 class NewsRepository(
     private val newsAPIService: NewsAPIService,
-    private val articleDAO: ArticleDAO,
-    private val newsRemoteDataSource: NewsRemoteDataSource,
-    private val newsLocalDataSource: NewsLocalDataSource
+    private val articleDAO: ArticleDAO
 ) {
     suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse> {
         return responseToResource(newsAPIService.getTopHeadlines(country,page))
