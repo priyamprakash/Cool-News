@@ -10,15 +10,17 @@ import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
 import com.pp.newsapiclient.data.repository.NewsRepository
 import com.pp.newsapiclient.data.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import javax.inject.Inject
 
-class NewsViewModel(
-    private val app:Application,
-    private val newsRepository: NewsRepository
-) : AndroidViewModel(app) {
+@HiltViewModel
+class NewsViewModel @Inject constructor(
+    private val app: Application,
+    private val newsRepository: NewsRepository) : AndroidViewModel(app) {
     val newsHeadLines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
     fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {

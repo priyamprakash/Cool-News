@@ -6,20 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.pp.newsapiclient.databinding.FragmentInfoBinding
 import com.pp.newsapiclient.presentation.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InfoFragment : Fragment() {
     private lateinit var fragmentInfoBinding: FragmentInfoBinding
-    private lateinit var viewModel : NewsViewModel
+    private val viewModel by activityViewModels<NewsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info, container, false)
     }
 
@@ -29,7 +31,6 @@ class InfoFragment : Fragment() {
         val args : InfoFragmentArgs by navArgs()
         val article = args.selectedArticle
 
-        viewModel=(activity as MainActivity).viewModel
 
         fragmentInfoBinding.wvInfo.apply {
           webViewClient = WebViewClient()

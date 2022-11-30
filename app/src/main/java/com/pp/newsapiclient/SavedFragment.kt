@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,11 +14,12 @@ import com.pp.newsapiclient.databinding.FragmentSavedBinding
 import com.pp.newsapiclient.presentation.adapter.NewsAdapter
 import com.pp.newsapiclient.presentation.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SavedFragment : Fragment() {
     private lateinit var fragmentSavedBinding: FragmentSavedBinding
-    private lateinit var viewModel: NewsViewModel
+    private val viewModel by activityViewModels<NewsViewModel>()
     private lateinit var newsAdapter: NewsAdapter
 
     override fun onCreateView(
@@ -31,7 +33,6 @@ class SavedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentSavedBinding = FragmentSavedBinding.bind(view)
-        viewModel = (activity as MainActivity).viewModel
         newsAdapter = (activity as MainActivity).newsAdapter
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
