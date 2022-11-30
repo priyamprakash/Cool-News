@@ -1,7 +1,6 @@
 package com.pp.newsapiclient.presentation.di
 
 import com.pp.newsapiclient.data.db.ArticleDAO
-import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
 import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsLocalDataSourceImpl
 import dagger.Module
 import dagger.Provides
@@ -14,7 +13,7 @@ import javax.inject.Singleton
 class LocalDataModule {
     @Singleton
     @Provides
-    fun provideLocalDataSource(articleDAO: ArticleDAO):NewsLocalDataSource{
+    fun provideLocalDataSource(articleDAO: ArticleDAO):NewsLocalDataSourceImpl{
       return NewsLocalDataSourceImpl(articleDAO)
     }
 

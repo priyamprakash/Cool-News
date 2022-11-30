@@ -2,8 +2,6 @@ package com.pp.newsapiclient.data.repository
 
 import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
-import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
-import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsLocalDataSourceImpl
 import com.pp.newsapiclient.data.repository.dataSourceImpl.NewsRemoteDataSourceImpl
 import com.pp.newsapiclient.data.util.Resource
