@@ -1,7 +1,6 @@
 package com.pp.newsapiclient.presentation.di
 
 import com.pp.newsapiclient.data.repository.NewsRepository
-import com.pp.newsapiclient.domain.repository.Waste
 import com.pp.newsapiclient.domain.usecase.*
 import dagger.Module
 import dagger.Provides
