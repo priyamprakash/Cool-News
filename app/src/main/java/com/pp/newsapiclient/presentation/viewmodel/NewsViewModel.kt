@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.lifecycle.*
 import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
+import com.pp.newsapiclient.data.repository.NewsRepository
 import com.pp.newsapiclient.data.util.Resource
 import com.pp.newsapiclient.domain.usecase.*
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,7 @@ import java.lang.Exception
 
 class NewsViewModel(
     private val app:Application,
+    private val newsRepository: NewsRepository,
     private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
     private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
     private val saveNewsUseCase: SaveNewsUseCase,
@@ -30,7 +32,7 @@ class NewsViewModel(
         try{
       if(isNetworkAvailable(app)) {
 
-          val apiResult = getNewsHeadlinesUseCase.execute(country, page)
+          val apiResult = newsRepository.getNewsHeadlines(country,page)
           newsHeadLines.postValue(apiResult)
       }else{
           newsHeadLines.postValue(Resource.Error("Internet is not available"))
@@ -81,11 +83,7 @@ class NewsViewModel(
        searchedNews.postValue(Resource.Loading())
         try {
             if (isNetworkAvailable(app)) {
-                val response = getSearchedNewsUseCase.execute(
-                    country,
-                    searchQuery,
-                    page
-                )
+                val response = newsRepository.getSearchedNews(country,searchQuery,page)
                 searchedNews.postValue(response)
             } else {
                 searchedNews.postValue(Resource.Error("No internet connection"))
@@ -97,17 +95,17 @@ class NewsViewModel(
 
     //local data
     fun saveArticle(article: Article) = viewModelScope.launch {
-        saveNewsUseCase.execute(article)
+        newsRepository.saveNews(article)
     }
 
     fun getSavedNews() = liveData{
-        getSavedNewsUseCase.execute().collect {
+        newsRepository.getSavedNews().collect {
             emit(it)
         }
     }
 
     fun deleteArticle(article: Article) = viewModelScope.launch {
-        deleteSavedNewsUseCase.execute(article)
+        newsRepository.deleteNews(article)
     }
 
 }
