@@ -1,5 +1,6 @@
 package com.pp.newsapiclient.data.repository
 
+import com.pp.newsapiclient.data.api.NewsAPIService
 import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
 import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
@@ -9,11 +10,12 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class NewsRepository(
+    private val newsAPIService: NewsAPIService,
     private val newsRemoteDataSource: NewsRemoteDataSource,
     private val newsLocalDataSource: NewsLocalDataSource
 ) {
     suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse> {
-        return responseToResource(newsRemoteDataSource.getTopHeadlines(country,page))
+        return responseToResource(newsAPIService.getTopHeadlines(country,page))
     }
 
     suspend fun getSearchedNews(
@@ -22,7 +24,7 @@ class NewsRepository(
         page: Int
     ): Resource<APIResponse> {
         return responseToResource(
-            newsRemoteDataSource.getSearchedNews(country,searchQuery,page)
+            newsAPIService.getSearchedTopHeadlines(country,searchQuery,page)
         )
     }
 
