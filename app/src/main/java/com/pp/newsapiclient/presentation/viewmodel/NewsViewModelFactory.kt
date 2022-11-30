@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.pp.newsapiclient.data.repository.NewsRepository
-import com.pp.newsapiclient.domain.usecase.*
 
 class NewsViewModelFactory(
     private val app:Application,

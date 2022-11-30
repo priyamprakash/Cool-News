@@ -10,7 +10,6 @@ import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
 import com.pp.newsapiclient.data.repository.NewsRepository
 import com.pp.newsapiclient.data.util.Resource
-import com.pp.newsapiclient.domain.usecase.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
