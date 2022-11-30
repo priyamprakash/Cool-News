@@ -4,8 +4,6 @@ import com.pp.newsapiclient.data.api.NewsAPIService
 import com.pp.newsapiclient.data.db.ArticleDAO
 import com.pp.newsapiclient.data.model.APIResponse
 import com.pp.newsapiclient.data.model.Article
-import com.pp.newsapiclient.data.repository.dataSource.NewsLocalDataSource
-import com.pp.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
 import com.pp.newsapiclient.data.util.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
