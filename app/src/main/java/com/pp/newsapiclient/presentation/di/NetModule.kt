@@ -28,8 +28,6 @@ class NetModule {
         return retrofit.create(NewsAPIService::class.java)
     }
 
-
-
 }
 
 

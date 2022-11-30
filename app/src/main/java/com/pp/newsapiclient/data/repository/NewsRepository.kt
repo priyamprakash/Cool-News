@@ -7,8 +7,9 @@ import com.pp.newsapiclient.data.model.Article
 import com.pp.newsapiclient.data.util.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
+import javax.inject.Inject
 
-class NewsRepository(
+class NewsRepository @Inject constructor(
     private val newsAPIService: NewsAPIService,
     private val articleDAO: ArticleDAO
 ) {
