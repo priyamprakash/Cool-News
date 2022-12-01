@@ -1,6 +1,7 @@
 package com.pp.newsapiclient
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,20 +29,26 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentInfoBinding = FragmentInfoBinding.bind(view)
-        val args : InfoFragmentArgs by navArgs()
+        val args: InfoFragmentArgs by navArgs()
         val article = args.selectedArticle
+        Log.d(
+            "Hanuman TAG",
+            "ID: ${article.} CONTENT: ${article.content} TITLE: ${article.title} " +
+                    "CONTENT: ${article.description}  PUBLISHED AT: ${article.publishedAt}  AUTHOR: ${article.author}  SOURCE: ${article.source} "
+        )
 
 
-        fragmentInfoBinding.wvInfo.apply {
-          webViewClient = WebViewClient()
-          if(article.url!=null) {
-              loadUrl(article.url)
-          }
 
-        }
+//        fragmentInfoBinding.wvInfo.apply {
+//          webViewClient = WebViewClient()
+//          if(article.url!=null) {
+//              loadUrl(article.url)
+//          }
+//
+//        }
         fragmentInfoBinding.fabSave.setOnClickListener {
-           viewModel.saveArticle(article)
-           Snackbar.make(view,"Saved Successfully!",Snackbar.LENGTH_LONG).show()
+            viewModel.saveArticle(article)
+            Snackbar.make(view, "Saved Successfully!", Snackbar.LENGTH_LONG).show()
         }
     }
 }
