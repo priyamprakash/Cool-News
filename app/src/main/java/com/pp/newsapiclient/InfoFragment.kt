@@ -33,7 +33,7 @@ class InfoFragment : Fragment() {
         val article = args.selectedArticle
         Log.d(
             "Hanuman TAG",
-            "ID: ${article.} CONTENT: ${article.content} TITLE: ${article.title} " +
+            " CONTENT: ${article.content} TITLE: ${article.title} " +
                     "CONTENT: ${article.description}  PUBLISHED AT: ${article.publishedAt}  AUTHOR: ${article.author}  SOURCE: ${article.source} "
         )
 
