@@ -56,10 +56,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="fill_horizontal"
-                android:maxLines="4"
+                android:lines="4"
                 android:text="Description"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/list_text"
+                android:textColor="#07132B"
                 android:textSize="12sp" />
 
 
@@ -67,7 +67,7 @@
                 android:id="@+id/tvSource"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/purple_700"
+                android:textColor="#ED1B34"
                 android:fontFamily="@font/poppins"
                 android:textSize="10dp"
 
