@@ -2,14 +2,12 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-
     <Transition
         app:constraintSetEnd="@layout/fragment_info_motion_scene_end"
         app:constraintSetStart="@layout/fragment_info_motion_scene_start">
 
         <OnClick app:touchAnchorSide="top"
-            app:dragDirection="dragStart"/>
+            app:dragDirection="dragUp"/>
 
     </Transition>
 

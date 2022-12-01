@@ -27,15 +27,16 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/content_layout"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="#DDDDDD"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:scaleType="center"
             android:src="@drawable/gradient_red"
-           />
+            />
     </LinearLayout>
 
 
@@ -83,7 +84,7 @@
             android:padding="24dp"
             android:text="Trump is the new president"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <!--    <WebView-->

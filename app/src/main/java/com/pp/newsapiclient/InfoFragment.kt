@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.pp.newsapiclient.databinding.FragmentInfoBinding
 import com.pp.newsapiclient.presentation.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -36,8 +37,9 @@ class InfoFragment : Fragment() {
             " CONTENT: ${article.content} TITLE: ${article.title} " +
                     "CONTENT: ${article.description}  PUBLISHED AT: ${article.publishedAt}  AUTHOR: ${article.author}  SOURCE: ${article.source} "
         )
+        Glide.with(requireActivity()).load(article.urlToImage).placeholder(R.drawable.gradient_red).into(fragmentInfoBinding.imageView)
 
-
+        fragmentInfoBinding.textTitle.text = article.title
 
 //        fragmentInfoBinding.wvInfo.apply {
 //          webViewClient = WebViewClient()
@@ -46,6 +48,7 @@ class InfoFragment : Fragment() {
 //          }
 //
 //        }
+
         fragmentInfoBinding.fabSave.setOnClickListener {
             viewModel.saveArticle(article)
             Snackbar.make(view, "Saved Successfully!", Snackbar.LENGTH_LONG).show()

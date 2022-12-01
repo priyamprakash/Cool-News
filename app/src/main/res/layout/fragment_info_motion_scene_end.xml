@@ -24,10 +24,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/content_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/content_layout"
+        app:layout_constraintTop_toBottomOf="@+id/title_layout" >
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -68,9 +68,9 @@
         android:id="@+id/title_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_background"
+        android:background="@color/white"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/content_layout"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -79,20 +79,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:padding="24dp"
+            android:padding="8dp"
             android:text="Trump is the new president"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textStyle="bold"
+            android:textSize="14sp" />
     </LinearLayout>
 
-    <!--    <WebView-->
-    <!--        android:id="@+id/wv_info"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
 
-    <!--    </WebView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
