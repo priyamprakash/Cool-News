@@ -72,10 +72,10 @@ class NewsFragment : Fragment() {
                     response.data?.let {
                         Log.i("MYTAG", "came here ${it.articles.toList().size}")
                         newsAdapter.differ.submitList(it.articles.toList())
-                        if (it.totalResults % 20 == 0) {
-                            pages = it.totalResults / 20
+                        pages = if (it.totalResults % 20 == 0) {
+                            it.totalResults / 20
                         } else {
-                            pages = it.totalResults / 20 + 1
+                            it.totalResults / 20 + 1
                         }
                         isLastPage = page == pages
                     }
@@ -97,7 +97,7 @@ class NewsFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-       // newsAdapter = NewsAdapter()
+//        newsAdapter = NewsAdapter()
         fragmentNewsBinding.rvNews.apply {
             adapter = newsAdapter
             layoutManager = GridLayoutManager(activity,2)
@@ -166,15 +166,11 @@ class NewsFragment : Fragment() {
 
          })
 
-         fragmentNewsBinding.svNews.setOnCloseListener(
-             object :SearchView.OnCloseListener{
-                 override fun onClose(): Boolean {
-                     initRecyclerView()
-                     viewNewsList()
-                     return false
-                 }
-
-             })
+         fragmentNewsBinding.svNews.setOnCloseListener {
+             initRecyclerView()
+             viewNewsList()
+             false
+         }
    }
 
 

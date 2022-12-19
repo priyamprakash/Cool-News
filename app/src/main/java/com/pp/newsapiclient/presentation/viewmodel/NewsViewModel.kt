@@ -20,31 +20,34 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val app: Application,
-    private val newsRepository: NewsRepository) : AndroidViewModel(app) {
+    private val newsRepository: NewsRepository
+) : AndroidViewModel(app) {
     val newsHeadLines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
     fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
         newsHeadLines.postValue(Resource.Loading())
-        try{
-      if(isNetworkAvailable(app)) {
+        try {
+            if (isNetworkAvailable(app)) {
 
-          val apiResult = newsRepository.getNewsHeadlines(country,page)
-          newsHeadLines.postValue(apiResult)
-      }else{
-          newsHeadLines.postValue(Resource.Error("Internet is not available"))
-      }
+                val apiResult = newsRepository.getNewsHeadlines(country, page)
+                newsHeadLines.postValue(apiResult)
+            } else {
+                newsHeadLines.postValue(Resource.Error("Internet is not available"))
+            }
 
-        }catch (e:Exception){
+        } catch (e: Exception) {
             newsHeadLines.postValue(Resource.Error(e.message.toString()))
         }
 
     }
 
-    private fun isNetworkAvailable(context: Context?):Boolean{
+    private fun isNetworkAvailable(context: Context?): Boolean {
         if (context == null) return false
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            val capabilities =
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             if (capabilities != null) {
                 when {
                     capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
@@ -69,22 +72,22 @@ class NewsViewModel @Inject constructor(
     }
 
     //search
-    val searchedNews : MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
     fun searchNews(
         country: String,
-        searchQuery : String,
+        searchQuery: String,
         page: Int
     ) = viewModelScope.launch {
-       searchedNews.postValue(Resource.Loading())
+        searchedNews.postValue(Resource.Loading())
         try {
             if (isNetworkAvailable(app)) {
-                val response = newsRepository.getSearchedNews(country,searchQuery,page)
+                val response = newsRepository.getSearchedNews(country, searchQuery, page)
                 searchedNews.postValue(response)
             } else {
                 searchedNews.postValue(Resource.Error("No internet connection"))
             }
-        }catch(e:Exception){
+        } catch (e: Exception) {
             searchedNews.postValue(Resource.Error(e.message.toString()))
         }
     }
@@ -94,7 +97,7 @@ class NewsViewModel @Inject constructor(
         newsRepository.saveNews(article)
     }
 
-    fun getSavedNews() = liveData{
+    fun getSavedNews() = liveData {
         newsRepository.getSavedNews().collect {
             emit(it)
         }
